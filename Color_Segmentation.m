@@ -31,26 +31,26 @@ i3=imbinarize(bmat,levelb);
 Isum = (i1&i2&i3);
 Isum1 = (i1|i2|i3);
 % Plot the data
-% subplot(3,2,1), imshow(i1);
-% title('Red Plane');
-% subplot(3,2,2), imshow(i2);
-% title('Green Plane');
-% subplot(3,2,3), imshow(i3);
-% title('Blue Plane');
-% subplot(3,2,4), imshow(Isum);
-% title('Sum of all the planes');
+subplot(3,2,1), imshow(i1);
+ title('Red Plane');
+ subplot(3,2,2), imshow(i2);
+ title('Green Plane');
+ subplot(3,2,3), imshow(i3);
+ title('Blue Plane');
+ subplot(3,2,4), imshow(Isum);
+ title('Sum of all the planes');
 
-% subplot(3,2,5), imshow(Isum1);
-% title('Sum of all the planes - MOD');
+subplot(3,2,5), imshow(Isum1);
+ title('Sum of all the planes - MOD');
 %% Complement Image and Fill in holes
 Icomp = imcomplement(Isum);
 Ifilled = imfill(Icomp,'holes'); % check doc for function; fills holes
-% figure, imshow(Ifilled);
+ figure, imshow(Ifilled);
 %%
-se = strel('disk', 15);
+se = strel('disk', 45);
 Iopenned = imopen(Ifilled,se);
-% figure,imshowpair(Iopenned, I, 'blend');
-% imshow(Iopenned);
+%figure,imshowpair(Iopenned, I, 'blend');
+imshow(Iopenned);
 %% Extract featurescentroid
 
 Iregion = regionprops(Iopenned, 'centroid');
