@@ -1,0 +1,11 @@
+%% Enhancing Multispectral Color Composite Images
+truecolor = multibandread('paris.lan', [512, 512, 7], 'uint8=>uint8', ...
+                          128,  'bil', 'ieee-le', {'Band','Direct',[3 2 1]});
+%%
+figure;
+imshow(truecolor);
+figure(f1);
+title('Truecolor Composite (Un-enhanced)')
+text(size(truecolor,2), size(truecolor,1) + 15,...
+  'Image courtesy of Space Imaging, LLC',...
+  'FontSize', 7, 'HorizontalAlignment', 'right')
